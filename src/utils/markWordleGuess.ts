@@ -1,7 +1,7 @@
 /*  each letter has three states :
 -not in word
--in word but wrong position
--in word and correct position
+-in word but wrong-position
+-in word and correct-position
 
 MarkedGuess is an array of tuples where tuple has a letter and its corresponding state
 for letter in guess :
@@ -11,17 +11,18 @@ for letter in guess :
       
     world, clown
     [
-        ["w" , "wrong position"],
-        ["o", "wrong position"],
-        ["r", "not present"],
-        ["l", "wrong position"],
-        ["d", "not present"]
+        ["w" , "wrong-position"],
+        ["o", "wrong-position"],
+        ["r", "not-present"],
+        ["l", "wrong-position"],
+        ["d", "not-present"]
     ]
     
 */
 
-type markingState = "not present" | "wrong position" | "correct position" | null;
-type IMarkedGuess = [string, markingState][];
+import { IMarkedGuess } from "./types"
+
+
 
 
 export function markWordleGuess(guess: string, hiddenTarget: string):IMarkedGuess {
@@ -30,7 +31,7 @@ export function markWordleGuess(guess: string, hiddenTarget: string):IMarkedGues
     const arrHiddenTarget = hiddenTarget.split("")
     for (let i in arrGuess) {
         if (arrGuess[i] === arrHiddenTarget[i]) {
-            markedGuess.push([arrGuess[i], "correct position"])
+            markedGuess.push([arrGuess[i], "correct-position"])
             arrGuess[i] = ""
             arrHiddenTarget[i] = ""
         } else {
@@ -41,15 +42,16 @@ export function markWordleGuess(guess: string, hiddenTarget: string):IMarkedGues
     for (let i in arrGuess) {
         if (arrGuess[i] !== "") {
             if (arrHiddenTarget.includes(arrGuess[i])) {
-                markedGuess[i] = [arrGuess[i], "wrong position"]
+                markedGuess[i] = [arrGuess[i], "wrong-position"]
                 arrHiddenTarget[arrHiddenTarget.indexOf(arrGuess[i])] = ""
                 arrGuess[i] = ""
                 
             }
             else {
-                markedGuess[i] = [arrGuess[i], "not present"]
+                markedGuess[i] = [arrGuess[i], "not-present"]
             }
-            
+        console.log(markedGuess)
+            console.log(arrHiddenTarget)
         }            
     }
     
