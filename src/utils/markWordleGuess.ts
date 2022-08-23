@@ -29,7 +29,7 @@ export function markWordleGuess(guess: string, hiddenTarget: string):IMarkedGues
     const markedGuess :IMarkedGuess = []
     const arrGuess = guess.split("")
     const arrHiddenTarget = hiddenTarget.split("")
-    for (let i in arrGuess) {
+    for (const i in arrGuess) {
         if (arrGuess[i] === arrHiddenTarget[i]) {
             markedGuess.push([arrGuess[i], "correct-position"])
             arrGuess[i] = ""
@@ -39,7 +39,7 @@ export function markWordleGuess(guess: string, hiddenTarget: string):IMarkedGues
         }
         
     }
-    for (let i in arrGuess) {
+    for (const i in arrGuess) {
         if (arrGuess[i] !== "") {
             if (arrHiddenTarget.includes(arrGuess[i])) {
                 markedGuess[i] = [arrGuess[i], "wrong-position"]

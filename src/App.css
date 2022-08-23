@@ -1,20 +1,26 @@
 
-.wordle-display {
+.wordle-row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     place-content: center;
     margin: 0 auto;
-    gap : 10px;
-    border: 3px solid black;
+    gap: 10px;
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
 }
+.wordle-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 .letterBox {
-    aspect-ratio: 1;
     display: flex;  
     justify-content: center;
     align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 3px solid rgb(88, 88, 88);
     
 }
 
@@ -27,5 +33,5 @@
 }
 
 .not-present {
-    background-color: lightgray;
+    background-color: rgb(226, 225, 225);
 }
